@@ -51,6 +51,13 @@
         NSLog(@"action----->%ld",(long)menuRow);
     };
 }
+- (IBAction)actionLeftBottom:(id)sender {
+    ZWPullMenuModel *model1 = [[ZWPullMenuModel alloc] init];
+    model1.title = @"ClearLove 7";
+    ZWPullMenuModel *model2 = [[ZWPullMenuModel alloc] init];
+    model2.title = @"UZI";
+    [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
