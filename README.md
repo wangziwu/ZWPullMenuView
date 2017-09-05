@@ -13,6 +13,21 @@
 - 支持纯文字、图标文字混合多种模板
 - 丰富的初始化方法、智能判断显示模板
 
+### 框架使用方法
+- 直接把ZWPullMenuView文件夹拖入到您的工程中.
+  
+  ```objc
+  #import "ZWPullMenuView.h"
+  ``` 
+  
+- Cocoapods安装
+  
+  ```objc
+  pod search ZWPullMenuView
+  pod 'ZWPullMenuView'
+  ```
+  
+  如果发现pod search ZWPullMenuView搜索不到,请执行pod repo update --verbose命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了.
 
-![ZWPullMenuView.gif](http://upload-images.jianshu.io/upload_images/3237547-79ce702a1561ecc2.gif?imageMogr2/auto-orient/strip)
+![ZWPullMenuView.gif](http://upload-images.jianshu.io/upload_images/3237547-802ad4296f728a8e.gif?imageMogr2/auto-orient/strip)
 

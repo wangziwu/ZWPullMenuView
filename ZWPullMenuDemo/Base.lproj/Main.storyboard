@@ -21,18 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-Hi-oZT">
-                                <rect key="frame" x="10" y="86" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="微信"/>
-                                <connections>
-                                    <action selector="actionWeChatMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SD7-kU-jcX"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgd-0J-a9I">
-                                <rect key="frame" x="319" y="86" width="46" height="30"/>
+                                <rect key="frame" x="267" y="85" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="支付宝"/>
+                                <state key="normal" title="支付宝样式"/>
                                 <connections>
                                     <action selector="actionAlipayMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Gv-Gf-DDe"/>
                                 </connections>
@@ -44,7 +36,7 @@
                                         <rect key="frame" x="335" y="21" width="20" height="22"/>
                                         <state key="normal" image="ap_more"/>
                                         <connections>
-                                            <action selector="actionTimePull:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtm-Lb-kK2"/>
+                                            <action selector="actionAlipayMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MFB-hJ-l49"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -56,19 +48,27 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPT-kO-hkA">
-                                <rect key="frame" x="294" y="617" width="71" height="30"/>
+                                <rect key="frame" x="267" y="594" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="时间选择"/>
+                                <state key="normal" title="右下半区模板"/>
                                 <connections>
                                     <action selector="actionTimePull:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L3b-eH-HaD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-Li-vMu">
-                                <rect key="frame" x="10" y="607" width="82" height="30"/>
+                                <rect key="frame" x="16" y="594" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="左下半区"/>
+                                <state key="normal" title="左下半区模板"/>
                                 <connections>
                                     <action selector="actionLeftBottom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SFa-Qp-lpe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-Hi-oZT">
+                                <rect key="frame" x="16" y="85" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="微信样式"/>
+                                <connections>
+                                    <action selector="actionWeChatMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SD7-kU-jcX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-828" y="35.532233883058474"/>
+            <point key="canvasLocation" x="-1586" y="123"/>
         </scene>
     </scenes>
     <resources>
