@@ -22,6 +22,16 @@
     [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
 }
 - (IBAction)actionWechatBtn:(id)sender {
+    NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收付款"];
+    NSArray *imageArray = @[@"contacts_add_newmessage_30x30_",
+                            @"contacts_add_friend_30x30_",
+                            @"contacts_add_scan_30x30_",
+                            @"contacts_add_scan_30x30_"];
+    [ZWPullMenuView pullMenuAnchorView:sender
+                            titleArray:titleArray
+                            imageArray:imageArray];
+}
+- (IBAction)actionAlipayBtn:(id)sender {
     NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收钱"];
     NSArray *imageArray = @[@"ap_group_talk",
                             @"ap_add_friend",
@@ -31,16 +41,6 @@
                                                        titleArray:titleArray
                                                        imageArray:imageArray];
     menuView.zwPullMenuStyle = PullMenuLightStyle;
-}
-- (IBAction)actionAlipayBtn:(id)sender {
-    NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收付款"];
-    NSArray *imageArray = @[@"contacts_add_newmessage_30x30_",
-                            @"contacts_add_friend_30x30_",
-                            @"contacts_add_scan_30x30_",
-                            @"contacts_add_scan_30x30_"];
-    [ZWPullMenuView pullMenuAnchorView:sender
-                            titleArray:titleArray
-                            imageArray:imageArray];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
