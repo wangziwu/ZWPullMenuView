@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 #import "ZWPullMenuView.h"
+#import "DemoTableMenuCell.h"
 @interface ViewController ()
+<UITableViewDelegate,
+UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *mTable;
 
 @end
 
@@ -17,48 +21,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    [self configNav];
+    [self configTable];
 }
-- (IBAction)actionWeChatMenu:(id)sender {
-    NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收付款"];
-    NSArray *imageArray = @[@"contacts_add_newmessage_30x30_",
-                            @"contacts_add_friend_30x30_",
-                            @"contacts_add_scan_30x30_",
-                            @"contacts_add_scan_30x30_"];
-    [ZWPullMenuView pullMenuAnchorView:sender
-                            titleArray:titleArray
-                            imageArray:imageArray];
+#pragma mark - config
+- (void)configNav {
+    self.title = @"下拉菜单";
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setImage:[UIImage imageNamed:@"ap_more"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(actionCreateBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn sizeToFit];
+    UIBarButtonItem *rightItemBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItems = @[rightItemBtn];
 }
-- (IBAction)actionAlipayMenu:(id)sender {
-    NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收钱"];
-    NSArray *imageArray = @[@"ap_group_talk",
-                            @"ap_add_friend",
-                            @"ap_scan",
-                            @"ap_qrcode"];
-    ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender
-                                                       titleArray:titleArray
-                                                       imageArray:imageArray];
-    menuView.zwPullMenuStyle = PullMenuLightStyle;
+- (void)configTable {
+    self.mTable.tableFooterView = UIView.new;
+    [self.mTable registerNib:[UINib nibWithNibName:@"DemoTableMenuCell" bundle:nil]
+      forCellReuseIdentifier:@"cell"];
 }
-- (IBAction)actionTimePull:(id)sender {
+#pragma mark - lifeCycle
+#pragma mark - delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DemoTableMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    return cell;
+}
+#pragma mark - actionFunction
+- (void)actionCreateBtn:(id)sender{
     ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender titleArray:@[@"2017年09月",
                                                                                       @"2017年08月",
                                                                                       @"2017年07月",
                                                                                       @"2017年06月",
-                                                                                      @"2017年05月"]];
+                                                                                      @"2017年05月",
+                                                                                      @"2017年04月",
+                                                                                      @"2017年03月",
+                                                                                      @"2017年02月",
+                                                                                      @"2017年01月"]];
     menuView.zwPullMenuStyle = PullMenuLightStyle;
     menuView.blockSelectedMenu = ^(NSInteger menuRow) {
         NSLog(@"action----->%ld",(long)menuRow);
     };
 }
-- (IBAction)actionLeftBottom:(id)sender {
-    ZWPullMenuModel *model1 = [[ZWPullMenuModel alloc] init];
-    model1.title = @"ClearLove 7";
-    ZWPullMenuModel *model2 = [[ZWPullMenuModel alloc] init];
-    model2.title = @"UZI";
-    [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
-}
-
+#pragma mark - function
+#pragma mark - layzing
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

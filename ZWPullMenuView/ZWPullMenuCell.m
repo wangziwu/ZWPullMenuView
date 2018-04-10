@@ -32,7 +32,9 @@
     }else{
         self.menuImageWidth.constant = 30;
     }
-    self.menuImageView.image = [UIImage imageNamed:menuModel.imageName];
+    if (menuModel.imageName.length) {
+        self.menuImageView.image = [UIImage imageNamed:menuModel.imageName];
+    }
     self.menuTitleLab.text = menuModel.title;
 }
 -(void)setZwPullMenuStyle:(ZWPullMenuStyle)zwPullMenuStyle{

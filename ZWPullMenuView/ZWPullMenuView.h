@@ -35,6 +35,11 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  cel高度
  */
 @property (nonatomic, assign) CGFloat menuCellHeight;
+/**
+ *  table最大高度限制
+ *  默认：5 * cellHeight
+ */
+@property (nonatomic, assign) CGFloat menuMaxHeight;
 /** 
  *  小三角高度
  *  45°等腰三角形

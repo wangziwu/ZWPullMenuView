@@ -11,6 +11,8 @@
 		85A547AC1F5A5C2D00A0C9FF /* ZWPullMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A547A61F5A5C2D00A0C9FF /* ZWPullMenuCell.xib */; };
 		85A547AD1F5A5C2D00A0C9FF /* ZWPullMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A547A81F5A5C2D00A0C9FF /* ZWPullMenuModel.m */; };
 		85A547AE1F5A5C2D00A0C9FF /* ZWPullMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A547AA1F5A5C2D00A0C9FF /* ZWPullMenuView.m */; };
+		85C852A9207CCF33008DBDE7 /* DemoTableMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85C852A6207CCF33008DBDE7 /* DemoTableMenuCell.xib */; };
+		85C852AA207CCF33008DBDE7 /* DemoTableMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C852A7207CCF33008DBDE7 /* DemoTableMenuCell.m */; };
 		85FB24501F5414F9006A4924 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85FB244F1F5414F9006A4924 /* main.m */; };
 		85FB24531F5414F9006A4924 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 85FB24521F5414F9006A4924 /* AppDelegate.m */; };
 		85FB24561F5414F9006A4924 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85FB24551F5414F9006A4924 /* ViewController.m */; };
@@ -27,6 +29,9 @@
 		85A547A81F5A5C2D00A0C9FF /* ZWPullMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWPullMenuModel.m; sourceTree = "<group>"; };
 		85A547A91F5A5C2D00A0C9FF /* ZWPullMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWPullMenuView.h; sourceTree = "<group>"; };
 		85A547AA1F5A5C2D00A0C9FF /* ZWPullMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWPullMenuView.m; sourceTree = "<group>"; };
+		85C852A6207CCF33008DBDE7 /* DemoTableMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoTableMenuCell.xib; sourceTree = "<group>"; };
+		85C852A7207CCF33008DBDE7 /* DemoTableMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableMenuCell.m; sourceTree = "<group>"; };
+		85C852A8207CCF33008DBDE7 /* DemoTableMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableMenuCell.h; sourceTree = "<group>"; };
 		85FB244B1F5414F9006A4924 /* ZWPullMenuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZWPullMenuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FB244F1F5414F9006A4924 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		85FB24511F5414F9006A4924 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,6 +69,16 @@
 			path = ZWPullMenuView;
 			sourceTree = "<group>";
 		};
+		85C852A5207CCF33008DBDE7 /* example */ = {
+			isa = PBXGroup;
+			children = (
+				85C852A8207CCF33008DBDE7 /* DemoTableMenuCell.h */,
+				85C852A7207CCF33008DBDE7 /* DemoTableMenuCell.m */,
+				85C852A6207CCF33008DBDE7 /* DemoTableMenuCell.xib */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
 		85FB24421F5414F9006A4924 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +99,7 @@
 		85FB244D1F5414F9006A4924 /* ZWPullMenuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				85C852A5207CCF33008DBDE7 /* example */,
 				85FB24511F5414F9006A4924 /* AppDelegate.h */,
 				85FB24521F5414F9006A4924 /* AppDelegate.m */,
 				85FB24541F5414F9006A4924 /* ViewController.h */,
@@ -164,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85FB245E1F5414F9006A4924 /* LaunchScreen.storyboard in Resources */,
+				85C852A9207CCF33008DBDE7 /* DemoTableMenuCell.xib in Resources */,
 				85FB245B1F5414F9006A4924 /* Assets.xcassets in Resources */,
 				85A547AC1F5A5C2D00A0C9FF /* ZWPullMenuCell.xib in Resources */,
 				85FB24591F5414F9006A4924 /* Main.storyboard in Resources */,
@@ -183,6 +200,7 @@
 				85A547AE1F5A5C2D00A0C9FF /* ZWPullMenuView.m in Sources */,
 				85A547AD1F5A5C2D00A0C9FF /* ZWPullMenuModel.m in Sources */,
 				85FB24501F5414F9006A4924 /* main.m in Sources */,
+				85C852AA207CCF33008DBDE7 /* DemoTableMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

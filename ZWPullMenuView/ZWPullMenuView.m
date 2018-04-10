@@ -40,6 +40,7 @@ UITableViewDataSource>
 - (void)configDefault{
     self.triangleHeight = 8;
     self.menuCellHeight = 50;
+    self.menuMaxHeight = 5 * self.menuCellHeight;
     self.zwPullMenuStyle = PullMenuDarkStyle;
 }
 - (void)configTable{
@@ -125,6 +126,10 @@ UITableViewDataSource>
     CGFloat y = 0;
     CGFloat h = self.menuArray.count * self.menuCellHeight;
     CGFloat w = [self cacuateCellWidth];
+    //最大高度围栏限制
+    if (h > self.menuMaxHeight) {
+        h = self.menuMaxHeight;
+    }
     //X中点位置：
     //居左：table右偏
     //居右：table左偏
