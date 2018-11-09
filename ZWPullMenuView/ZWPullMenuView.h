@@ -45,6 +45,9 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  45°等腰三角形
  */
 @property (nonatomic, assign) CGFloat triangleHeight;
+
+@property (nonatomic, assign, getter=isLimitHeight) BOOL limitHeight;
+
 /** 
  *  pullMenu样式
  */

@@ -127,8 +127,10 @@ UITableViewDataSource>
     CGFloat h = self.menuArray.count * self.menuCellHeight;
     CGFloat w = [self cacuateCellWidth];
     //最大高度围栏限制
-    if (h > self.menuMaxHeight) {
-        h = self.menuMaxHeight;
+    if (self.isLimitHeight) {
+        if (h > self.menuMaxHeight) {
+            h = self.menuMaxHeight;
+        }
     }
     //X中点位置：
     //居左：table右偏
