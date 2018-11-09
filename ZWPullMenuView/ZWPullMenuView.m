@@ -41,6 +41,7 @@ UITableViewDataSource>
     self.triangleHeight = 8;
     self.menuCellHeight = 50;
     self.menuMaxHeight = 5 * self.menuCellHeight;
+    self.limitHeight = YES;
     self.zwPullMenuStyle = PullMenuDarkStyle;
 }
 - (void)configTable{
