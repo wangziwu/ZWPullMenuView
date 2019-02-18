@@ -28,7 +28,7 @@ UITableViewDataSource>
 - (void)configNav {
     self.title = @"下拉菜单";
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setImage:[UIImage imageNamed:@"ap_more"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"icon_add_white_20x20"] forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(actionCreateBtn:) forControlEvents:UIControlEventTouchUpInside];
     [rightBtn sizeToFit];
     UIBarButtonItem *rightItemBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
@@ -45,21 +45,16 @@ UITableViewDataSource>
     return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DemoTableMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    DemoTableMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"
+                                                              forIndexPath:indexPath];
     return cell;
 }
 #pragma mark - actionFunction
 - (void)actionCreateBtn:(id)sender{
-    ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender titleArray:@[@"2017年09月",
-                                                                                      @"2017年08月",
-                                                                                      @"2017年07月",
-                                                                                      @"2017年06月",
-                                                                                      @"2017年05月",
-                                                                                      @"2017年04月",
-                                                                                      @"2017年03月",
-                                                                                      @"2017年02月",
-                                                                                      @"2017年01月"]];
-    menuView.zwPullMenuStyle = PullMenuLightStyle;
+    ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender titleArray:@[@"2019年02月",
+                                                                                      @"2019年01月",
+                                                                                      @"2018年12月",
+                                                                                      @"2018年11月"]];
     menuView.blockSelectedMenu = ^(NSInteger menuRow) {
         NSLog(@"action----->%ld",(long)menuRow);
     };

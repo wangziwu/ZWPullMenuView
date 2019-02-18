@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ZWPullMenuModel.h"
+#import "ZWPullMenuConfig.h"
+NS_ASSUME_NONNULL_BEGIN
 //selected
 typedef void(^BlockSelectedMenu)(NSInteger menuRow);
 @interface ZWPullMenuView : UIView
@@ -24,6 +26,10 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  */
 @property (nonatomic, copy) NSArray<ZWPullMenuModel *> *menuArray;
 /**
+ *  相关配置
+ */
+@property (nonatomic, strong) ZWPullMenuConfig *zw_menuConfg;
+/**
  *  蒙层背景color
  */
 @property (nonatomic, strong) UIColor *coverBgColor;
@@ -31,6 +37,10 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  主样式color
  */
 @property (nonatomic, strong) UIColor *menuBgColor;
+/**
+ *  线条颜色
+ */
+@property (nonatomic, strong) UIColor *lineColor;
 /**
  *  cel高度
  */
@@ -61,9 +71,9 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  menuArray:图文Model
  */
 + (instancetype)pullMenuAnchorView:(UIView *)anchorView;
-+ (instancetype)pullMenuAnchorView:(UIView *)anchorView titleArray:(NSArray *)titleArray;
-+ (instancetype)pullMenuAnchorView:(UIView *)anchorView titleArray:(NSArray *)titleArray imageArray:(NSArray *)imageArray;
-+ (instancetype)pullMenuAnchorView:(UIView *)anchorView menuArray:(NSArray<ZWPullMenuModel *> *)menuArray;
++ (instancetype)pullMenuAnchorView:(UIView *)anchorView titleArray:(nullable NSArray *)titleArray;
++ (instancetype)pullMenuAnchorView:(UIView *)anchorView titleArray:(nullable NSArray *)titleArray imageArray:(nullable NSArray *)imageArray;
++ (instancetype)pullMenuAnchorView:(UIView *)anchorView menuArray:(nullable NSArray<ZWPullMenuModel *> *)menuArray;
 
 /**
  *  anchorView：下拉依赖绝对坐标
@@ -74,7 +84,8 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  menuArray:图文Model
  */
 + (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint;
-+ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint titleArray:(NSArray *)titleArray;
-+ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint titleArray:(NSArray *)titleArray imageArray:(NSArray *)imageArray;
-+ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint menuArray:(NSArray<ZWPullMenuModel *> *)menuArray;
++ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint titleArray:(nullable NSArray *)titleArray;
++ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint titleArray:(nullable NSArray *)titleArray imageArray:(nullable NSArray *)imageArray;
++ (instancetype)pullMenuAnchorPoint:(CGPoint)anchorPoint menuArray:(nullable NSArray<ZWPullMenuModel *> *)menuArray;
 @end
+NS_ASSUME_NONNULL_END

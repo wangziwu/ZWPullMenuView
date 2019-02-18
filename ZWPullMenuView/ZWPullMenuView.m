@@ -10,9 +10,6 @@
 #import "ZWPullMenuCell.h"
 #import "ZWPullMenuModel.h"
 
-#define MenuContentMargin   15
-#define MenuImageWidth      30
-#define MenuBorderMinMargin    10
 @interface ZWPullMenuView ()
 <UITableViewDelegate,
 UITableViewDataSource>
@@ -45,8 +42,8 @@ UITableViewDataSource>
 }
 - (void)configTable{
     [self addSubview:self.contentView];
-    [self.mTable registerNib:[UINib nibWithNibName:@"ZWPullMenuCell" bundle:nil]
-      forCellReuseIdentifier:@"ZWPullMenuCell"];
+    [self.mTable registerClass:[ZWPullMenuCell class]
+        forCellReuseIdentifier:@"ZWPullMenuCell"];
 }
 #pragma mark - lifeCycle
 #pragma mark - delegate
@@ -61,9 +58,11 @@ UITableViewDataSource>
     ZWPullMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZWPullMenuCell"
                                                             forIndexPath:indexPath];
     ZWPullMenuModel *cellModel = self.menuArray[indexPath.row];
+    cell.zw_menuConfg = self.zw_menuConfg;
     cell.menuModel = cellModel;
     cell.zwPullMenuStyle = self.zwPullMenuStyle;
-    cell.isFinalCell = (indexPath.row == self.menuArray.count-1);
+    cell.lineColor = self.lineColor;
+    cell.isFinalCell = indexPath.row == (self.menuArray.count - 1);
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,15 +97,15 @@ UITableViewDataSource>
 - (CGFloat)cacuateCellWidth{
     __block CGFloat maxTitleWidth = 0;
     [self.menuArray enumerateObjectsUsingBlock:^(ZWPullMenuModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat width = [obj.title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}].width;
+        CGFloat width = [obj.title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:self.zw_menuConfg.zw_menuTitleFontSize]}].width;
         if (obj.imageName.length) {
-            width = width + MenuContentMargin + MenuImageWidth;
+            width = width + self.zw_menuConfg.zw_menuContentMargin + self.zw_menuConfg.zw_menuImageWidth;
         }
-        if (width>maxTitleWidth) {
+        if (width > maxTitleWidth) {
             maxTitleWidth = width;
         }
     }];
-    return maxTitleWidth + MenuContentMargin * 3;
+    return maxTitleWidth + self.zw_menuConfg.zw_menuContentMargin * 2;
 }
 - (void)handleMenuModelArray:(NSArray *)array{
     NSMutableArray *tempArray = [NSMutableArray array];
@@ -134,22 +133,22 @@ UITableViewDataSource>
     //居左：table右偏
     //居右：table左偏
     if (x>CGRectGetMidX(self.bounds)) {
-        x = x - 3*w/4.f;
+        x = x - 3 * w / 4.f;
         layerAnchor.x = 1;
         layerPosition.x = x+w;
     }else{
-        x = x - w/4.f;
+        x = x - w / 4.f;
         layerAnchor.x = 0;
         layerPosition.x = x;
     }
     //围栏
-    if (x<MenuBorderMinMargin) {
-        x = MenuBorderMinMargin;
+    if (x < self.zw_menuConfg.zw_menuBorderMinMargin) {
+        x = self.zw_menuConfg.zw_menuBorderMinMargin;
         layerPosition.x = x;
     }
-    if (x+w>self.bounds.size.width) {
-        x = self.bounds.size.width - w - MenuBorderMinMargin;
-        layerPosition.x = x+w;
+    if (x + w > self.bounds.size.width) {
+        x = self.bounds.size.width - w - self.zw_menuConfg.zw_menuBorderMinMargin;
+        layerPosition.x = x + w;
     }
     //Y中心位置
     //居上：下拉
@@ -187,14 +186,14 @@ UITableViewDataSource>
     //Y中心位置
     //居上：下拉
     //居下：上拉
-    if (CGRectGetMidY(self.anchorRect)<CGRectGetMidY(self.bounds)) {
+    if (CGRectGetMidY(self.anchorRect) < CGRectGetMidY(self.bounds)) {
         y = 0;
-        p = CGPointMake(x+self.triangleHeight, y+self.triangleHeight);
-        q = CGPointMake(x-self.triangleHeight, y+self.triangleHeight);
+        p = CGPointMake(x + self.triangleHeight, y + self.triangleHeight);
+        q = CGPointMake(x - self.triangleHeight, y + self.triangleHeight);
     }else{
         y = CGRectGetHeight(self.contentView.frame);
-        p = CGPointMake(x+self.triangleHeight, y-self.triangleHeight);
-        q = CGPointMake(x-self.triangleHeight, y-self.triangleHeight);
+        p = CGPointMake(x + self.triangleHeight, y - self.triangleHeight);
+        q = CGPointMake(x - self.triangleHeight, y - self.triangleHeight);
     }
     CAShapeLayer *triangleLayer = [CAShapeLayer new];
     triangleLayer.frame = self.contentView.bounds;
@@ -295,6 +294,16 @@ UITableViewDataSource>
     }
     return _contentView;
 }
+- (ZWPullMenuConfig *)zw_menuConfg {
+    if (!_zw_menuConfg) {
+        _zw_menuConfg = [[ZWPullMenuConfig alloc] init];
+        _zw_menuConfg.zw_menuContentMargin      = MenuContentMargin;
+        _zw_menuConfg.zw_menuImageWidth         = MenuImageWidth;
+        _zw_menuConfg.zw_menuBorderMinMargin    = MenuBorderMinMargin;
+        _zw_menuConfg.zw_menuTitleFontSize      = MenuTitleFontSize;
+    }
+    return _zw_menuConfg;
+}
 -(void)setMenuArray:(NSArray<ZWPullMenuModel *> *)menuArray{
     _menuArray = menuArray;
     [self refreshUI];
@@ -350,7 +359,14 @@ UITableViewDataSource>
 -(void)setAnchorRect:(CGRect)anchorRect{
     _anchorRect = anchorRect;
 }
-
+- (void)setLineColor:(UIColor *)lineColor {
+    _lineColor = lineColor;
+    [self refreshUI];
+}
+- (void)setMenuCellHeight:(CGFloat)menuCellHeight {
+    _menuCellHeight = menuCellHeight;
+    [self refreshUI];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

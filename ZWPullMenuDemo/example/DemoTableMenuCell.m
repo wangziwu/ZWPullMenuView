@@ -16,10 +16,11 @@
 }
 - (IBAction)actionBlueBtn:(id)sender {
     ZWPullMenuModel *model1 = [[ZWPullMenuModel alloc] init];
-    model1.title = @"德玛西亚大保健";
+    model1.title = @"编辑";
     ZWPullMenuModel *model2 = [[ZWPullMenuModel alloc] init];
-    model2.title = @"艾欧尼亚女护士";
-    [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
+    model2.title = @"删除";
+    ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
+    menuView.menuCellHeight = 25;
 }
 - (IBAction)actionWechatBtn:(id)sender {
     NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收付款"];

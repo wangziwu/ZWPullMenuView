@@ -8,13 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "ZWPullMenuModel.h"
+#import "ZWPullMenuConfig.h"
+NS_ASSUME_NONNULL_BEGIN
 @interface ZWPullMenuCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *menuImageView;
-@property (weak, nonatomic) IBOutlet UILabel *menuTitleLab;
+@property (strong, nonatomic) UIImageView *menuImageView;
+@property (strong, nonatomic) UILabel *menuTitleLab;
 /** 
  *  model
  */
 @property (nonatomic, strong) ZWPullMenuModel *menuModel;
+/**
+ *  相关配置
+ */
+@property (nonatomic, strong) ZWPullMenuConfig *zw_menuConfg;
+/**
+ *  线条颜色
+ */
+@property (nonatomic, strong) UIColor *lineColor;
 /** 
  * 最后一栏cell
  */
@@ -25,3 +35,4 @@
 @property (nonatomic, assign) ZWPullMenuStyle zwPullMenuStyle;
 
 @end
+NS_ASSUME_NONNULL_END
