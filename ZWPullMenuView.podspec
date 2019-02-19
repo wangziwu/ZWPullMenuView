@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.source  = {:git => 'https://github.com/wangziwu/ZWPullMenuView.git',:tag => s.version}
   s.source_files  = 'ZWPullMenuView/*.{h,m}'
-  s.resources     = 'ZWPullMenuView/*.{png,xib,nib,bundle}'
+  # s.resources     = 'ZWPullMenuView/*.{png,xib,nib,bundle}'
   s.requires_arc  = true
 end
