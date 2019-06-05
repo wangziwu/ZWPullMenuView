@@ -55,6 +55,12 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  45°等腰三角形
  */
 @property (nonatomic, assign) CGFloat triangleHeight;
+
+/**
+ 是否限制Menu高度,YES:高度=menuMaxHeight, NO:高度=menuArray.count * menuCellHeight, default=YES
+ */
+@property (nonatomic, assign, getter=isLimitHeight) BOOL limitHeight;
+
 /** 
  *  pullMenu样式
  */
