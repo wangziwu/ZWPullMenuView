@@ -21,6 +21,7 @@
     model2.title = @"删除";
     ZWPullMenuView *menuView = [ZWPullMenuView pullMenuAnchorView:sender menuArray:@[model1,model2]];
     menuView.menuCellHeight = 25;
+    menuView.zw_adjustPullDown = YES;
 }
 - (IBAction)actionWechatBtn:(id)sender {
     NSArray *titleArray = @[@"发起群聊",@"添加朋友",@"扫一扫",@"收付款"];

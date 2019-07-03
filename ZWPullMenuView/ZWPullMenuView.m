@@ -132,10 +132,10 @@ UITableViewDataSource>
     //X中点位置：
     //居左：table右偏
     //居右：table左偏
-    if (x>CGRectGetMidX(self.bounds)) {
+    if (x > CGRectGetMidX(self.bounds)) {
         x = x - 3 * w / 4.f;
         layerAnchor.x = 1;
-        layerPosition.x = x+w;
+        layerPosition.x = x + w;
     }else{
         x = x - w / 4.f;
         layerAnchor.x = 0;
@@ -150,10 +150,17 @@ UITableViewDataSource>
         x = self.bounds.size.width - w - self.zw_menuConfg.zw_menuBorderMinMargin;
         layerPosition.x = x + w;
     }
+    //需要偏转Y对比中心点 默认比对屏幕中心点
+    CGFloat offsetCenterY = CGRectGetMidY(self.bounds);
+    //优先菜单下拉
+    if (self.zw_adjustPullDown) {
+        //下偏移区间距离
+        offsetCenterY = self.bounds.size.height - h - self.triangleHeight;
+    }
     //Y中心位置
     //居上：下拉
     //居下：上拉
-    if (CGRectGetMidY(self.anchorRect)<CGRectGetMidY(self.bounds)) {
+    if (CGRectGetMidY(self.anchorRect) < offsetCenterY) {
         y = CGRectGetMaxY(self.anchorRect);
         self.mTable.frame = CGRectMake(0, self.triangleHeight, w, h);
         layerAnchor.y = 0;
@@ -164,6 +171,7 @@ UITableViewDataSource>
         layerAnchor.y = 1;
         layerPosition.y = y + h;
     }
+    
     self.contentView.frame = CGRectMake(x, y, w, h + self.triangleHeight);
     [self drawTriangle];
     //动画锚点
@@ -176,6 +184,7 @@ UITableViewDataSource>
     CGFloat y = 0;
     CGPoint p = CGPointZero;
     CGPoint q = CGPointZero;
+    CGFloat h = self.menuArray.count * self.menuCellHeight;
     //围栏
     if (x < 2 * self.triangleHeight) {
         x = 2 * self.triangleHeight;
@@ -183,10 +192,17 @@ UITableViewDataSource>
     if (x > CGRectGetWidth(self.contentView.bounds) - 2 * self.triangleHeight) {
         x = CGRectGetWidth(self.contentView.bounds) - 2 * self.triangleHeight;
     }
+    //需要偏转Y对比中心点 默认比对屏幕中心点
+    CGFloat offsetCenterY = CGRectGetMidY(self.bounds);
+    //优先菜单下拉
+    if (self.zw_adjustPullDown) {
+        //下偏移区间距离
+        offsetCenterY = self.bounds.size.height - h - self.triangleHeight;
+    }
     //Y中心位置
     //居上：下拉
     //居下：上拉
-    if (CGRectGetMidY(self.anchorRect) < CGRectGetMidY(self.bounds)) {
+    if (CGRectGetMidY(self.anchorRect) < offsetCenterY) {
         y = 0;
         p = CGPointMake(x + self.triangleHeight, y + self.triangleHeight);
         q = CGPointMake(x - self.triangleHeight, y + self.triangleHeight);
@@ -365,6 +381,10 @@ UITableViewDataSource>
 }
 - (void)setMenuCellHeight:(CGFloat)menuCellHeight {
     _menuCellHeight = menuCellHeight;
+    [self refreshUI];
+}
+- (void)setZw_adjustPullDown:(BOOL)zw_adjustPullDown {
+    _zw_adjustPullDown = zw_adjustPullDown;
     [self refreshUI];
 }
 /*

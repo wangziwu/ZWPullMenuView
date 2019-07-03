@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat zw_menuBorderMinMargin;
 //文本字体大小
 @property (nonatomic, assign) CGFloat zw_menuTitleFontSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

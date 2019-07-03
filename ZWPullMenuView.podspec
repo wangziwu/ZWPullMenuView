@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name    = 'ZWPullMenuView'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = '下拉选择视图、支持微信、支付宝等样式。自动计算最优显示位置、动画效果。'
   s.homepage  = 'https://github.com/wangziwu/ZWPullMenuView'
   s.license = 'MIT'

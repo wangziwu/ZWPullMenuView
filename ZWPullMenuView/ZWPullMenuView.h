@@ -55,6 +55,10 @@ typedef void(^BlockSelectedMenu)(NSInteger menuRow);
  *  45°等腰三角形
  */
 @property (nonatomic, assign) CGFloat triangleHeight;
+/**
+ *  调整使下拉优先 当向下偏转屏幕距离足够，优先向下偏转
+ */
+@property (nonatomic, assign) BOOL zw_adjustPullDown;
 /** 
  *  pullMenu样式
  */
