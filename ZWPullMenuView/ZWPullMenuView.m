@@ -105,7 +105,10 @@ UITableViewDataSource>
             maxTitleWidth = width;
         }
     }];
-    return maxTitleWidth + self.zw_menuConfg.zw_menuContentMargin * 2;
+    maxTitleWidth += self.zw_menuConfg.zw_menuContentMargin * 2;
+    CGFloat maxWidth = self.bounds.size.width - self.zw_menuConfg.zw_menuBorderMinMargin * 2;
+    maxTitleWidth = MIN(maxWidth, maxTitleWidth);
+    return maxTitleWidth;
 }
 - (void)handleMenuModelArray:(NSArray *)array{
     NSMutableArray *tempArray = [NSMutableArray array];
@@ -120,7 +123,6 @@ UITableViewDataSource>
 #pragma mark - Private
 - (void)drawmTableFrame{
     CGPoint layerAnchor = CGPointZero;
-    CGPoint layerPosition = CGPointZero;
     CGFloat x = CGRectGetMidX(self.anchorRect);
     CGFloat y = 0;
     CGFloat h = self.menuArray.count * self.menuCellHeight;
@@ -135,20 +137,16 @@ UITableViewDataSource>
     if (x > CGRectGetMidX(self.bounds)) {
         x = x - 3 * w / 4.f;
         layerAnchor.x = 1;
-        layerPosition.x = x + w;
     }else{
         x = x - w / 4.f;
         layerAnchor.x = 0;
-        layerPosition.x = x;
     }
     //围栏
     if (x < self.zw_menuConfg.zw_menuBorderMinMargin) {
         x = self.zw_menuConfg.zw_menuBorderMinMargin;
-        layerPosition.x = x;
     }
     if (x + w > self.bounds.size.width) {
         x = self.bounds.size.width - w - self.zw_menuConfg.zw_menuBorderMinMargin;
-        layerPosition.x = x + w;
     }
     //需要偏转Y对比中心点 默认比对屏幕中心点
     CGFloat offsetCenterY = CGRectGetMidY(self.bounds);
@@ -164,19 +162,15 @@ UITableViewDataSource>
         y = CGRectGetMaxY(self.anchorRect);
         self.mTable.frame = CGRectMake(0, self.triangleHeight, w, h);
         layerAnchor.y = 0;
-        layerPosition.y = y;
     }else{
         y = CGRectGetMinY(self.anchorRect) - self.triangleHeight - h;
         self.mTable.frame = CGRectMake(0, 0, w, h);
         layerAnchor.y = 1;
-        layerPosition.y = y + h;
     }
-    
+    //动画锚点
+    self.contentView.layer.anchorPoint = layerAnchor;
     self.contentView.frame = CGRectMake(x, y, w, h + self.triangleHeight);
     [self drawTriangle];
-    //动画锚点
-    self.contentView.layer.position = layerPosition;
-    self.contentView.layer.anchorPoint = layerAnchor;
 }
 //三角形
 - (void)drawTriangle{
